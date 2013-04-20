@@ -8,7 +8,7 @@
 
   %body
     %header
-      %h1 Where On The Blue Marble?
+      %h1 Where On The Blue Marble
 
     %main
       .pick-game.hide
@@ -27,7 +27,15 @@
         .photo
           %img{ :alt => '' }
         %img.map{ :src => './images/earth.svg' }
-        .score
+        .overlay
+          %img.hide.flag-green{ :src => './images/flag-green.png' }
+          %img.hide.flag-gray{ :src => './images/flag-gray.png' }
+        .timer Time left: 2:00
+        .score Score: 0 points
+        .result.hide
+          %h1 Nice one!
+          %p.points
+          %a.next{ :href => '#' } Next image
 
       .share.hide
 

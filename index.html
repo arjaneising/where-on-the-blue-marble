@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <h1>Where On The Blue Marble?</h1>
+      <h1>Where On The Blue Marble</h1>
     </header>
     <main>
       <div class='pick-game hide'>
@@ -32,7 +32,17 @@
           <img alt=''>
         </div>
         <img class='map' src='./images/earth.svg'>
-        <div class='score'></div>
+        <div class='overlay'>
+          <img class='hide flag-green' src='./images/flag-green.png'>
+          <img class='hide flag-gray' src='./images/flag-gray.png'>
+        </div>
+        <div class='timer'>Time left: 2:00</div>
+        <div class='score'>Score: 0 points</div>
+        <div class='result hide'>
+          <h1>Nice one!</h1>
+          <p class='points'></p>
+          <a class='next' href='#'>Next image</a>
+        </div>
       </div>
       <div class='share hide'></div>
     </main>
