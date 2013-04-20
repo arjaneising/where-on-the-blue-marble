@@ -1,0 +1,37 @@
+!!! 5
+%html{ :lang => 'en' }
+  %head
+    %title Where On The Blue Marble?
+    %meta{ :charset => 'utf-8' }
+    %link{ :rel => 'stylesheet', :media => 'screen,projection', :href => './styles/screen.css' }
+    %script{ :src => './scripts/modernizr.js' }
+
+  %body
+    %header
+      %h1 Where On The Blue Marble?
+
+    %main
+      .pick-game.hide
+        %p
+          %label
+            %input{ :type => 'radio', :name => 'gametype', :value => 'free' }
+            Free game type
+          %label
+            %input{ :type => 'radio', :name => 'gametype', :value => 'multiple' }
+            Multiple choice
+          %label
+            %input{ :type => 'radio', :name => 'gametype', :value => 'area' }
+            In my area
+
+      .play-game.hide
+        .photo
+          %img{ :alt => '' }
+        %img.map{ :src => './images/earth.svg' }
+        .score
+
+      .share.hide
+
+    %script{ :src => './scripts/jquery-1.9.1.js' }
+    %script{ :src => './scripts/jquery.hammer-1.0.5.js' }
+    %script{ :src => './scripts/robinson.js' }
+    %script{ :src => './scripts/game.js' }

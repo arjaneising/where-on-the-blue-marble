@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Where On The Blue Marble?</title>
+    <meta charset='utf-8'>
+    <link href='./styles/screen.css' media='screen,projection' rel='stylesheet'>
+    <script src='./scripts/modernizr.js'></script>
+  </head>
+  <body>
+    <header>
+      <h1>Where On The Blue Marble?</h1>
+    </header>
+    <main>
+      <div class='pick-game hide'>
+        <p>
+          <label>
+            <input name='gametype' type='radio' value='free'>
+            Free game type
+          </label>
+          <label>
+            <input name='gametype' type='radio' value='multiple'>
+            Multiple choice
+          </label>
+          <label>
+            <input name='gametype' type='radio' value='area'>
+            In my area
+          </label>
+        </p>
+      </div>
+      <div class='play-game hide'>
+        <div class='photo'>
+          <img alt=''>
+        </div>
+        <img class='map' src='./images/earth.svg'>
+        <div class='score'></div>
+      </div>
+      <div class='share hide'></div>
+    </main>
+    <script src='./scripts/jquery-1.9.1.js'></script>
+    <script src='./scripts/jquery.hammer-1.0.5.js'></script>
+    <script src='./scripts/robinson.js'></script>
+    <script src='./scripts/game.js'></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+/* line 10, ../src/sass/screen.sass */
+* {
+  border: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+/* line 16, ../src/sass/screen.sass */
+body {
+  background: #0c1b3b;
+  color: whitesmoke;
+  font: 62.5% "Gill Sans", "Gill Sans MT", Calibri, sans-serif; }
+
+/* line 21, ../src/sass/screen.sass */
+article, aside, canvas, details, figcaption, figure, footer, header, main, nav, progress, section, summary, video {
+  display: block; }
+
+/* line 24, ../src/sass/screen.sass */
+header {
+  font-size: 1.8em; }
+  /* line 27, ../src/sass/screen.sass */
+  header h1 {
+    font-size: 4em;
+    font-weight: normal;
+    padding: 0.25em 1em;
+    text-align: center; }
+
+/* line 33, ../src/sass/screen.sass */
+main {
+  font-size: 1.8em; }
+
+/* line 36, ../src/sass/screen.sass */
+.hide {
+  display: none;
+  display: none !important; }
+
+/* line 40, ../src/sass/screen.sass */
+.pick-game {
+  background: #445261;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2em auto;
+  max-width: 40em;
+  padding: 2em;
+  width: 90%; }
+
+/* line 49, ../src/sass/screen.sass */
+.play-game .photo {
+  left: 5%;
+  overflow: hidden;
+  position: absolute;
+  right: 40%;
+  top: 10em;
+  z-index: 10; }
+  /* line 57, ../src/sass/screen.sass */
+  .play-game .photo img {
+    height: auto;
+    width: 100%; }
+/* line 61, ../src/sass/screen.sass */
+.play-game img.map {
+  bottom: 5%;
+  height: 333.44492px;
+  opacity: 0.9;
+  position: fixed;
+  right: 5%;
+  width: 650px;
+  z-index: 100; }

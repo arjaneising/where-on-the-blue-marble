@@ -1,0 +1,68 @@
+@import 'compass'
+
+$dark_blue: #0C1B3B
+$ligh_blue: #445261
+$green: #C1C9AB
+$red: #9E524D
+$brown: #442729
+$white: #F5F5F5
+
+*
+  border: 0
+  list-style: none
+  margin: 0
+  padding: 0
+
+body
+  background: $dark_blue
+  color: $white
+  font: 62.5% "Gill Sans", "Gill Sans MT", Calibri, sans-serif
+
+article, aside, canvas, details, figcaption, figure, footer, header, main, nav, progress, section, summary, video
+  display: block
+
+header
+  font-size: 1.8em
+
+  h1
+    font-size: 4em
+    font-weight: normal
+    padding: 0.25em 1em
+    text-align: center
+
+main
+  font-size: 1.8em
+
+.hide
+  display: none
+  display: none !important
+
+.pick-game
+  background: $ligh_blue
+  +box-sizing(border-box)
+  margin: 2em auto
+  max-width: 40em
+  padding: 2em
+  width: 90%
+
+.play-game
+  .photo
+    left: 5%
+    overflow: hidden
+    position: absolute
+    right: 40%
+    top: 10em
+    z-index: 10
+
+    img
+      height: auto
+      width: 100%
+
+  img.map
+    bottom: 5%
+    height: 333.44492456px
+    opacity: 0.9
+    position: fixed
+    right: 5%
+    width: 650px
+    z-index: 100
