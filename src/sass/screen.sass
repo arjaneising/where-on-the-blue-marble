@@ -56,6 +56,9 @@ header
 main
   font-size: 1.8em
 
+  a
+    color: $white
+
 .hide
   display: none
   display: none !important
@@ -63,10 +66,25 @@ main
 .pick-game
   background: $light_blue
   +box-sizing(border-box)
+  +border-radius(1em)
   margin: 2em auto
   max-width: 40em
   padding: 2em
   width: 90%
+
+  p
+    text-align: center
+
+  a.play-game
+    background: mix($yellow, #111, 80%)
+    +background(linear-gradient(mix($yellow, #111, 80%), mix($yellow, #111, 60%)))
+    border: 0.1em solid mix($yellow, #111, 60%)
+    +border-radius(5em)
+    display: inline-block
+    font-size: 2em
+    margin: 0 0 2em
+    padding: 0.3em 1em
+    text-decoration: none
 
 .play-game
   .photo
@@ -141,3 +159,30 @@ main
       text-decoration: none
       margin: 0 auto
       width: 60%
+
+.help
+  background: rgba(200, 200, 200, 0.9)
+  color: #111
+  margin: 3em auto
+  max-width: 40em
+  padding: 2em
+  width: 90%
+
+  h1
+    font-size: 2em
+    margin: 0.5em 0 0.25em
+
+  h2
+    font-size: 1.5em
+    margin: 2em 0 0.25em
+
+  h3
+    font-size: 1em
+    margin: 1em 0 0.25em
+
+  p
+    line-height: 1.5em
+    margin-bottom: 1.5em
+
+  a
+    color: #666

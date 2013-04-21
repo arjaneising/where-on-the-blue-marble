@@ -1,5 +1,5 @@
 (function($, Robinson, Modernizr) {
-  var pickGameElm, playGameElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints;
+  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints;
 
 
 
@@ -9,30 +9,52 @@
 
     pickGameElm = $('.pick-game').removeClass('hide');
     playGameElm = $('.play-game');
+    endGameElm = $('.end-game');
+    helpElm = $('.help');
     overlayElm = $('.overlay');
     resultElm = $('.result');
 
     // start a game
-    pickGameElm.on('change', 'input', startGame);
+    pickGameElm.on('click', '.play-game', startGame);
     resultElm.on('click', '.next', nextImage);
+    $('body').on('click', '.toggle-help', toggleHelp);
 
     // init the map details
     rbnsn = new Robinson(333, 650, -13);
     setMap();
-
 
     setInterval(checkTimer, 400);
   };
 
 
 
+  var toggleHelp = function(evt) {
+    if (evt) {
+      evt.preventDefault();
+    }
+
+    if (helpElm.hasClass('hide')) {
+      pickGameElm.addClass('hide');
+      playGameElm.addClass('hide');
+      endGameElm.addClass('hide');
+      helpElm.removeClass('hide');
+    }
+    else {
+      pickGameElm.removeClass('hide');
+      helpElm.addClass('hide');
+    }
+
+  }
+
+
+
   var startGame = function(evt) {
     var typeElm, value;
 
-    typeElm = $(this);
-    value = typeElm.val();
+    // typeElm = $(this);
+    // value = typeElm.val();
 
-    gameType = value;
+    // gameType = value;
 
     totalPoints = 0;
 
@@ -54,7 +76,8 @@
 
 
   var stopGame = function() {
-    console.log('WOEI');
+    playGameElm.addClass('hide');
+    endGameElm.removeClass('hide');
   };
 
 
@@ -83,8 +106,6 @@
     if (!canTap) {
       return;
     }
-
-    console.log('woei');
     
     var offset, srcEvent;
 
@@ -94,6 +115,8 @@
     latlng = rbnsn.xy2latlng(srcEvent.clientX - offset.left, srcEvent.clientY - offset.top);
 
     showAnswer(latlng);
+
+    canTap = false;
   };
 
 
@@ -124,11 +147,11 @@
     overlayElm.find('.flag-gray').css({left: xyClicked.x + 'px', top: xyClicked.y + 'px'});
     
     dist = distance(latlng.lat, latlng.lng, lat, lng);
-    points = 67;
+    points = getPoints(dist);
 
     totalPoints += points;
 
-    $('.score').text('Score: ' + totalPoints + ' points');
+    $('.thescore').text(totalPoints);
 
     resultElm.removeClass('hide');
     resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!');
@@ -180,15 +203,27 @@
     var R, dLat, dLng, a, c;
 
     R = 6371;
-    dLat = (lat2 - lat1) / (Math.PI / 180);
-    dLng = (lng2 - lng1) / (Math.PI / 180);
-    lat1 = lat1 / (Math.PI / 180);
-    lat2 = lat2 / (Math.PI / 180);
+    dLat = (lat2 - lat1) * (Math.PI / 180);
+    dLng = (lng2 - lng1) * (Math.PI / 180);
+    lat1 = lat1 * (Math.PI / 180);
+    lat2 = lat2 * (Math.PI / 180);
 
     a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLng / 2) * Math.sin(dLng / 2) * Math.cos(lat1) * Math.cos(lat2); 
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
     return R * c; 
-  }
+  };
+
+
+
+  var getPoints = function(dist) {
+    if (dist < 0) {
+      return 0;
+    }
+    if (dist > 10000) {
+      return 0;
+    }
+    return 100 - ~~(dist / 100);
+  };
 
 
   init();

@@ -13,31 +13,68 @@
     %main
       .pick-game.hide
         %p
-          %label
-            %input{ :type => 'radio', :name => 'gametype', :value => 'free' }
-            Free game type
-          %label
-            %input{ :type => 'radio', :name => 'gametype', :value => 'multiple' }
-            Multiple choice
-          %label
-            %input{ :type => 'radio', :name => 'gametype', :value => 'area' }
-            In my area
+          %a.play-game{ :href => '#' } Play the game!
+        %p
+          %a.toggle-help{ :href => '#' } Don't know where to start?
 
       .play-game.hide
         .photo
           %img{ :alt => '' }
-        %img.map{ :src => './images/earth.svg' }
+        %img.map{ :src => './images/earth.png' }
         .overlay
           %img.hide.flag-green{ :src => './images/flag-green.png' }
           %img.hide.flag-gray{ :src => './images/flag-gray.png' }
         .timer Time left: 2:00
-        .score Score: 0 points
+        .score Score: <span class="thescore">0</span> points
         .result.hide
           %h1 Nice one!
           %p.points
           %a.next{ :href => '#' } Next image
 
-      .share.hide
+      .end-game.hide
+        %h1 Great! You scored <span class="thescore">0</span> points!
+
+
+      .help.hide
+        %a.toggle-help{ :href => '#' } Back to game
+        
+        %h1 Welcome!
+
+        %p Welcome to “Where on the Blue Marble”. This game uses actual space photography from the large NASA repository, taken by manned missions from 1965 to date. Many thousands of photographs of every corner of our planet. You can help NASA make sense of this database simply by playing a game.
+
+        %h2 Gameplay
+
+        %p Playing is straighforward. In the game you will see a photo of a location of Earth, taken from space. It is your task to put the pointer in the map of the world where you think this location is. You will receive points for speed and accuracy. The faster you place the pointer and the closer to the actual location, the more points you receive. You have two minutes to locate as many photos as possible.
+
+        %h2 Social Media Integration
+
+        %p At the end you can share your score on Twitter and/or Facebook, challenging your friends to beat your score. Additionally, after each game you can select your favorite picture of that game and set it as your Twitter or Facebook background picture.
+
+        %h2 You help NASA
+
+        %p Simply by playing the game you help NASA qualify their huge photo repository. Some photos are very clear and relatively easy to pinpoint. Many others are very indistinctive, large scale or bad quality. Assuming that clear landmarks will score better than very generic features, and assumin that good quality pictures are selected more often as background pictures, ultimately all photos will receive ‘quality scores’. This will help NASA increase the attractiveness of its repository, but also act as a guideline for public space photography in the future. So your game score will ultimately let astronauts know what to point their cameras at! Now, how cool is that?
+
+        %h2 FAQ
+
+        %h3 How is the photo location determined?
+
+        %p Some of the photos cover large areas of land, while others show much less. The NASA photo database holds a lot of additional information about all photos, including a longitude-latitude location. This location is determined by the geographical center location of the picture. In other words: the middle of the area in the picture determines the location.
+
+        %p You will notice that some pictures are taken at a 90 degree angle down, while others show the (often curved) horizon, and have been taken at a different angle from the space craft. In these ‘skewed’ photographs, the geographical center of the visible area determines the location on the map. This may not always coincide with the middle of the picture itself! In some photos this latitude-longitude position may be an estimation. We do not accept liability for incorrect positions.
+
+        %h3 How are photos oriented?
+
+        %p Not all photos are positioned on a neat South-North orientation. In fact, most photos are rotated in a pretty random direction. This makes recognizing even familiar places extremely difficult. The idea is that the learning system of the game will gradually improve the quality of pictures shown, including the recognizability of features in the photos. Will this make the game too easy? Just play and find out!
+
+        %h3 Where do all these photos come from?
+
+        %p The photos in the NASA repository are sourced from over a hundred US manned missions into space. There are a few 1960’s Mercury and Gemini mission photos, somewhat more Apollo-era shots, followed by Skylab and a few NASA-MIR missions. Then there are thousands of Space Shuttle mission photos, from 1981 to the last flight of Atlantis in 2011. Most of the photos come from the International Space Station, starting with Expedition 1 in 2000, all the way to Expedition 35 in 2013. The repository is a live database, meaning that new images are added to it every day.
+
+        %h3 How can I find out more about a mission?
+
+        %p All photos in the game show the mission it was taken on. If you are interested, you can find more information on that particular mission at the end of the game, when you can view all pictures and their location in a list, simply by clicking on the mission description.
+
+
 
     %script{ :src => './scripts/jquery-1.9.1.js' }
     %script{ :src => './scripts/jquery.hammer-1.0.5.js' }
