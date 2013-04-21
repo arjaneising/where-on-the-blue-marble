@@ -36,8 +36,6 @@
 
     setInterval(checkTimer, 400);
 
-    id = parseInt(location.hash.substr(1), 10);
-
     if (id) {
       startGame(id);
     }
