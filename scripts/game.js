@@ -4,11 +4,11 @@
 
   textsForPoints = {
     'p500': ['Spot On', 'Bulls Eye', 'On target'],
-    'p1500': ['Nice one', 'Super close', 'Well done'],
-    'p3000': ['Getting close', 'Not bad', 'Almost'],
-    'p5000': [' Not quite', 'Oops', 'Wrong guess'],
-    'p10000': ['Not even near', 'Other continent', 'Big miss'],
-    'p100000': ['No idea?', 'Lucky shot?', 'That Sucks']
+    'p1500': ['Spot On', 'Bulls Eye', 'On target'],
+    'p3000': ['Nice one', 'Super close', 'Well done'],
+    'p5000': ['Getting close', 'Not bad', 'Almost'],
+    'p10000': [' Not quite', 'Oops', 'Wrong guess'],
+    'p100000': ['Not even near', 'Other continent', 'Big miss']
   }
 
 
@@ -92,6 +92,10 @@
   var requestImagery = function(cb, err) {
     var promise;
 
+    currentInfo = false;
+
+    playGameElm.find('.photo img').addClass('hide');
+
     promise = $.ajax('./source.php', {
       cache: false,
       dataType: 'json'
@@ -124,7 +128,6 @@
 
     showAnswer(latlng);
 
-    canTap = false;
   };
 
 
@@ -132,7 +135,7 @@
   var showImage = function(data) {
     var url;
     url = data.url;
-    playGameElm.find('.photo img').attr('src', url);
+    playGameElm.find('.photo img').removeClass('hide').attr('src', url);
     currentInfo = data;
   };
 
@@ -142,6 +145,11 @@
 
 
   var showAnswer = function(latlng) {
+    if (!currentInfo) {
+      return;
+    }
+    canTap = false;
+
     var lat, lng, xy, dist;
 
     lat = parseFloat(currentInfo.lat, 10);
@@ -163,7 +171,7 @@
 
     resultElm.removeClass('hide');
     resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!');
-    resultElm.find('.awesome-text').text(getAwesomeText(points));
+    resultElm.find('.awesome-text').text(getAwesomeText(dist));
   };
 
 
@@ -239,6 +247,8 @@
     var randomText = function(arr) {
       return arr[~~(Math.random() * arr.length)]
     }
+
+    p = parseInt(p, 10);
 
     if (p < 500) {
       return randomText(textsForPoints.p500);
