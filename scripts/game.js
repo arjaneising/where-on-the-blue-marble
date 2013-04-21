@@ -23,7 +23,7 @@
     resultElm = $('.result');
 
     // start a game
-    pickGameElm.on('click', '.play-game', startGame);
+    pickGameElm.on('click', '.go-play-game', startGame);
     resultElm.on('click', '.next', nextImage);
     $('body').on('click', '.toggle-help', toggleHelp);
 
@@ -57,12 +57,7 @@
 
 
   var startGame = function(evt) {
-    var typeElm, value;
-
-    // typeElm = $(this);
-    // value = typeElm.val();
-
-    // gameType = value;
+    evt.preventDefault();
 
     totalPoints = 0;
 
@@ -119,12 +114,12 @@
       return;
     }
     
-    var offset, srcEvent;
+    var offset, pos;
 
     offset = $(evt.currentTarget).offset();
-    srcEvent = evt.gesture.srcEvent;
+    pos = evt.gesture.touches[0];
 
-    latlng = rbnsn.xy2latlng(srcEvent.clientX - offset.left, srcEvent.clientY - offset.top);
+    latlng = rbnsn.xy2latlng(pos.pageX - offset.left, pos.pageY - offset.top);
 
     showAnswer(latlng);
 
@@ -150,7 +145,7 @@
     }
     canTap = false;
 
-    var lat, lng, xy, dist;
+    var lat, lng, xy, dist, details, toPush;
 
     lat = parseFloat(currentInfo.lat, 10);
     lng = parseFloat(currentInfo.lon, 10);
@@ -172,6 +167,37 @@
     resultElm.removeClass('hide');
     resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!');
     resultElm.find('.awesome-text').text(getAwesomeText(dist));
+
+
+    details = [];
+
+    if (currentInfo.feat && currentInfo.feat.length) {
+      toPush = 'It features ' + currentInfo.feat;
+
+      if (currentInfo.geon && currentInfo.geon.length) {
+        toPush += ' in ' + currentInfo.geon;
+      }
+
+      toPush += '.';
+      details.push(toPush);
+    }
+
+    if (currentInfo.mission && currentInfo.mission.length) {
+     toPush = 'The photo was taken during the ' + currentInfo.mission + ' mission';
+
+      if (currentInfo.mission_start && currentInfo.mission_end) {
+        toPush += ', which took place between ' + currentInfo.mission_start + ' and ' + currentInfo.mission_end;
+      }
+
+      toPush += '.';
+      details.push(toPush);
+    }
+
+    if (currentInfo.cloudpercentage) {
+      details.push('The cloud percentage is ' + currentInfo.cloudpercentage + '%.');
+    }
+
+    resultElm.find('.details').text(details.join(' '));
   };
 
 
