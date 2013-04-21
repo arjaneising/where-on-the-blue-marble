@@ -1,5 +1,5 @@
 (function($, Robinson, Modernizr) {
-  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints;
+  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints, collected, playing;
 
 
   textsForPoints = {
@@ -13,7 +13,10 @@
 
 
   var init = function() {
+    var id;
+
     canTap = false;
+    playing = false;
 
     pickGameElm = $('.pick-game').removeClass('hide');
     playGameElm = $('.play-game');
@@ -32,6 +35,12 @@
     setMap();
 
     setInterval(checkTimer, 400);
+
+    id = parseInt(location.hash.substr(1), 10);
+
+    if (id) {
+      startGame(id);
+    }
   };
 
 
@@ -57,16 +66,26 @@
 
 
   var startGame = function(evt) {
-    evt.preventDefault();
+    var id;
+    if (typeof evt === 'number') {
+      id = evt;
+    }
+    else {
+      evt.preventDefault();
+      id = false;
+    }
+
+    playing = true;
 
     totalPoints = 0;
+    collected = [];
 
     pickGameElm.addClass('hide');
     playGameElm.removeClass('hide');
 
     startTimer();
 
-    requestImagery(showImage, requestError);
+    requestImagery(showImage, requestError, id);
   };
 
 
@@ -79,19 +98,41 @@
 
 
   var stopGame = function() {
+    if (!playing) {
+      return;
+    }
+
+    var id, url;
+
+    playing = false;
     playGameElm.addClass('hide');
     endGameElm.removeClass('hide');
+
+    id = collected[~~(Math.random() * collected.length)].id;
+
+    url = 'http://whereonthebluemarble.com/photo/' + id;
+
+    endGameElm.find('.twitter').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://whereonthebluemarble.com" data-text="I scored ' + totalPoints + ' points by guessing this picture of our #BlueMarble ' + url + ' Try and beat me!" data-size="large" data-count="none" data-dnt="true">Tweet</a>');
+
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
   };
 
 
-  var requestImagery = function(cb, err) {
-    var promise;
+  var requestImagery = function(cb, err, id) {
+    var promise, url;
+
+    if (id !== false && id) {
+      url = './serveRandomImage.php?id=' + id;
+    }
+    else {
+      url = './serveRandomImage.php';
+    }
 
     currentInfo = false;
 
     playGameElm.find('.photo img').addClass('hide');
 
-    promise = $.ajax('./source.php', {
+    promise = $.ajax(url, {
       cache: false,
       dataType: 'json'
     });
@@ -132,6 +173,7 @@
     url = data.url;
     playGameElm.find('.photo img').removeClass('hide').attr('src', url);
     currentInfo = data;
+    collected.push(data);
   };
 
 
@@ -171,31 +213,33 @@
 
     details = [];
 
-    if (currentInfo.feat && currentInfo.feat.length) {
-      toPush = 'It features ' + currentInfo.feat;
+    // if (currentInfo.feat && currentInfo.feat.length) {
+    //   toPush = 'It features ' + currentInfo.feat;
 
-      if (currentInfo.geon && currentInfo.geon.length) {
-        toPush += ' in ' + currentInfo.geon;
-      }
+    //   if (currentInfo.geon && currentInfo.geon.length) {
+    //     toPush += ' in ' + currentInfo.geon;
+    //   }
 
-      toPush += '.';
-      details.push(toPush);
-    }
+    //   toPush += '.';
+    //   details.push(toPush);
+    // }
 
-    if (currentInfo.mission && currentInfo.mission.length) {
-     toPush = 'The photo was taken during the ' + currentInfo.mission + ' mission';
+    // if (currentInfo.mission && currentInfo.mission.length) {
+    //  toPush = 'The photo was taken during the ' + currentInfo.mission + ' mission';
 
-      if (currentInfo.mission_start && currentInfo.mission_end) {
-        toPush += ', which took place between ' + currentInfo.mission_start + ' and ' + currentInfo.mission_end;
-      }
+    //   if (currentInfo.mission_start && currentInfo.mission_end) {
+    //     toPush += ', which took place between ' + currentInfo.mission_start + ' and ' + currentInfo.mission_end;
+    //   }
 
-      toPush += '.';
-      details.push(toPush);
-    }
+    //   toPush += '.';
+    //   details.push(toPush);
+    // }
 
-    if (currentInfo.cloudpercentage) {
-      details.push('The cloud percentage is ' + currentInfo.cloudpercentage + '%.');
-    }
+    // if (currentInfo.cloudpercentage) {
+    //   details.push('The cloud percentage is ' + currentInfo.cloudpercentage + '%.');
+    // }
+
+    details.push(currentInfo.info);
 
     resultElm.find('.details').text(details.join(' '));
   };

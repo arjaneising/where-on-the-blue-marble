@@ -5,6 +5,12 @@
     %meta{ :charset => 'utf-8' }
     %link{ :rel => 'stylesheet', :media => 'screen,projection', :href => './styles/screen.css' }
     %script{ :src => './scripts/modernizr.js' }
+    %meta{ :name => 'twitter:card', :value => 'Where on the Blue Marble is an addictive #spaceapps game. Pinpoint the location of the picture from space!' }
+    %meta{ :name => 'og:description', :value => 'Where on the Blue Marble is an addictive #spaceapps game. Pinpoint the location of the picture from space!' }
+    %meta{ :name => 'twitter:site', :value => '@wobluemarble' }
+    %meta{ :name => 'og:title', :value => 'Where On The Blue Marble?' }
+    %meta{ :name => 'og:site_name', :value => 'Where On The Blue Marble?' }
+    %meta{ :name => 'og:image', :value => 'http://whereonthebluemarble.com/ogimage.jpg' }
 
   %body
     %header
@@ -34,6 +40,8 @@
 
       .end-game.hide
         %h1 Great! You scored <span class="thescore">0</span> points!
+
+        .twitter
 
 
       .help.hide

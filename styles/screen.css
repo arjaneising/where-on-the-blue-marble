@@ -44,21 +44,30 @@ header {
     padding: 0.25em 1em;
     text-align: center;
     word-spacing: 0.5em; }
+    @media only screen and (max-width: 1000px) {
+      /* line 48, ../src/sass/screen.sass */
+      header h1 {
+        font-size: 3em; } }
+    @media only screen and (max-width: 800px) {
+      /* line 48, ../src/sass/screen.sass */
+      header h1 {
+        font-size: 2em; } }
 
-/* line 56, ../src/sass/screen.sass */
+/* line 62, ../src/sass/screen.sass */
 main {
   font-size: 1.8em; }
-  /* line 59, ../src/sass/screen.sass */
+  /* line 65, ../src/sass/screen.sass */
   main a {
     color: whitesmoke; }
 
-/* line 62, ../src/sass/screen.sass */
+/* line 68, ../src/sass/screen.sass */
 .hide {
   display: none;
   display: none !important; }
 
-/* line 66, ../src/sass/screen.sass */
-.pick-game {
+/* line 72, ../src/sass/screen.sass */
+.pick-game,
+.end-game {
   background: #445261;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -72,11 +81,13 @@ main {
   max-width: 40em;
   padding: 2em;
   width: 90%; }
-  /* line 75, ../src/sass/screen.sass */
-  .pick-game p {
+  /* line 82, ../src/sass/screen.sass */
+  .pick-game p,
+  .end-game p {
     text-align: center; }
-  /* line 78, ../src/sass/screen.sass */
-  .pick-game a.go-play-game {
+  /* line 85, ../src/sass/screen.sass */
+  .pick-game a.go-play-game,
+  .end-game a.go-play-game {
     background: #b1b309;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b1b309), color-stop(100%, #898a0b));
     background: -webkit-linear-gradient(#b1b309, #898a0b);
@@ -95,7 +106,7 @@ main {
     padding: 0.3em 1em;
     text-decoration: none; }
 
-/* line 90, ../src/sass/screen.sass */
+/* line 97, ../src/sass/screen.sass */
 .play-game .photo {
   left: 2.5%;
   overflow: hidden;
@@ -103,11 +114,11 @@ main {
   right: 45%;
   top: 10em;
   z-index: 10; }
-  /* line 98, ../src/sass/screen.sass */
+  /* line 105, ../src/sass/screen.sass */
   .play-game .photo img {
     height: auto;
     width: 100%; }
-/* line 102, ../src/sass/screen.sass */
+/* line 109, ../src/sass/screen.sass */
 .play-game img.map,
 .play-game .overlay {
   bottom: 2.5%;
@@ -117,15 +128,15 @@ main {
   right: 2.5%;
   width: 650px;
   z-index: 100; }
-/* line 112, ../src/sass/screen.sass */
+/* line 119, ../src/sass/screen.sass */
 .play-game .overlay {
   z-index: 200; }
-  /* line 115, ../src/sass/screen.sass */
+  /* line 122, ../src/sass/screen.sass */
   .play-game .overlay img {
     position: absolute;
     margin: -20px 0 0 -1px;
     left: -99999em; }
-/* line 120, ../src/sass/screen.sass */
+/* line 127, ../src/sass/screen.sass */
 .play-game .timer,
 .play-game .score {
   font: cgf_locust_resistanceregular;
@@ -134,10 +145,10 @@ main {
   text-align: center;
   top: 10em;
   width: 25%; }
-/* line 129, ../src/sass/screen.sass */
+/* line 136, ../src/sass/screen.sass */
 .play-game .score {
   top: 12.5em; }
-/* line 132, ../src/sass/screen.sass */
+/* line 139, ../src/sass/screen.sass */
 .play-game .result {
   background: #445261;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #445261), color-stop(100%, #0c1b3b));
@@ -162,10 +173,10 @@ main {
   text-align: center;
   width: 20em;
   z-index: 400; }
-  /* line 147, ../src/sass/screen.sass */
+  /* line 154, ../src/sass/screen.sass */
   .play-game .result h1 {
     margin: 0 0 0.25em; }
-  /* line 150, ../src/sass/screen.sass */
+  /* line 157, ../src/sass/screen.sass */
   .play-game .result .next {
     background: #cccccc;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f5f5f5), color-stop(100%, #cccccc));
@@ -187,7 +198,7 @@ main {
     margin: 1em auto;
     width: 60%; }
 
-/* line 163, ../src/sass/screen.sass */
+/* line 170, ../src/sass/screen.sass */
 .help {
   background: rgba(200, 200, 200, 0.9);
   color: #111111;
@@ -195,22 +206,22 @@ main {
   max-width: 40em;
   padding: 2em;
   width: 90%; }
-  /* line 171, ../src/sass/screen.sass */
+  /* line 178, ../src/sass/screen.sass */
   .help h1 {
     font-size: 2em;
     margin: 0.5em 0 0.25em; }
-  /* line 175, ../src/sass/screen.sass */
+  /* line 182, ../src/sass/screen.sass */
   .help h2 {
     font-size: 1.5em;
     margin: 2em 0 0.25em; }
-  /* line 179, ../src/sass/screen.sass */
+  /* line 186, ../src/sass/screen.sass */
   .help h3 {
     font-size: 1em;
     margin: 1em 0 0.25em; }
-  /* line 183, ../src/sass/screen.sass */
+  /* line 190, ../src/sass/screen.sass */
   .help p {
     line-height: 1.5em;
     margin-bottom: 1.5em; }
-  /* line 187, ../src/sass/screen.sass */
+  /* line 194, ../src/sass/screen.sass */
   .help a {
     color: #666666; }
