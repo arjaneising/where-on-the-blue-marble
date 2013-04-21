@@ -36,6 +36,8 @@
 
     setInterval(checkTimer, 400);
 
+    id = parseInt(location.hash.substr(1), 10);
+
     if (id) {
       startGame(id);
     }
@@ -108,7 +110,7 @@
 
     id = collected[~~(Math.random() * collected.length)].id;
 
-    url = 'http://whereonthebluemarble.com/photo/' + id;
+    url = 'http://whereonthebluemarble.com/photo?id=' + id;
 
     endGameElm.find('.twitter').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://whereonthebluemarble.com" data-text="I scored ' + totalPoints + ' points by guessing this picture of our #BlueMarble ' + url + ' Try and beat me!" data-size="large" data-count="none" data-dnt="true">Tweet</a>');
 
