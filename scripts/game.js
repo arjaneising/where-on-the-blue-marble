@@ -1,7 +1,15 @@
 (function($, Robinson, Modernizr) {
-  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints;
+  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints;
 
 
+  textsForPoints = {
+    'p500': ['Spot On', 'Bulls Eye', 'On target'],
+    'p1500': ['Nice one', 'Super close', 'Well done'],
+    'p3000': ['Getting close', 'Not bad', 'Almost'],
+    'p5000': [' Not quite', 'Oops', 'Wrong guess'],
+    'p10000': ['Not even near', 'Other continent', 'Big miss'],
+    'p100000': ['No idea?', 'Lucky shot?', 'That Sucks']
+  }
 
 
   var init = function() {
@@ -155,6 +163,7 @@
 
     resultElm.removeClass('hide');
     resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!');
+    resultElm.find('.awesome-text').text(getAwesomeText(points));
   };
 
 
@@ -224,6 +233,30 @@
     }
     return 100 - ~~(dist / 100);
   };
+
+
+  var getAwesomeText = function(p) {
+    var randomText = function(arr) {
+      return arr[~~(Math.random() * arr.length)]
+    }
+
+    if (p < 500) {
+      return randomText(textsForPoints.p500);
+    }
+    if (p < 1500) {
+      return randomText(textsForPoints.p1500);
+    }
+    if (p < 3000) {
+      return randomText(textsForPoints.p3000);
+    }
+    if (p < 5000) {
+      return randomText(textsForPoints.p5000);
+    }
+    if (p < 10000) {
+      return randomText(textsForPoints.p10000);
+    }
+    return randomText(textsForPoints.p100000);
+  }
 
 
   init();
