@@ -128,7 +128,7 @@
       url = './serveRandomImage.php?id=' + id;
     }
     else {
-      url = './source.php';
+      url = './serveRandomImage.php';
     }
 
     currentInfo = false;
