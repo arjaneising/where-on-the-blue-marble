@@ -125,7 +125,8 @@ main
       left: -99999em
 
   .timer,
-  .score
+  .score,
+  .hint
     font: cgf_locust_resistanceregular
     position: fixed
     right: 2.5%
@@ -135,6 +136,23 @@ main
 
   .score
     top: 12.5em
+
+  .hint
+    top: 15em
+
+    &:before
+      background: $yellow
+      +border-radius(5em)
+      color: #000
+      content: attr(data-title)
+      left: 1.5em
+      padding: 0.5em 1.5em
+      position: absolute
+      right: 1.5em
+      top: 0
+
+    &.closed:before
+      display: none
 
   .result
     background: $light_blue

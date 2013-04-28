@@ -1,5 +1,5 @@
 (function($, Robinson, Modernizr) {
-  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints, collected, playing;
+  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints, collected, playing, hintUsed;
 
 
   textsForPoints = {
@@ -29,6 +29,7 @@
     pickGameElm.on('click', '.go-play-game', startGame);
     resultElm.on('click', '.next', nextImage);
     $('body').on('click', '.toggle-help', toggleHelp);
+    playGameElm.on('click', '.hint', openHint);
 
     // init the map details
     rbnsn = new Robinson(333, 650, -13);
@@ -60,8 +61,7 @@
       pickGameElm.removeClass('hide');
       helpElm.addClass('hide');
     }
-
-  }
+  };
 
 
 
@@ -125,7 +125,7 @@
       url = './serveRandomImage.php?id=' + id;
     }
     else {
-      url = './serveRandomImage.php';
+      url = './source.php';
     }
 
     currentInfo = false;
@@ -163,7 +163,6 @@
     latlng = rbnsn.xy2latlng(pos.pageX - offset.left, pos.pageY - offset.top);
 
     showAnswer(latlng);
-
   };
 
 
@@ -172,8 +171,10 @@
     var url;
     url = data.url;
     playGameElm.find('.photo img').removeClass('hide').attr('src', url);
+    playGameElm.find('.hint').attr('data-title', 'The photo shows some part of ' + data.hint + '.').addClass('closed');
     currentInfo = data;
     collected.push(data);
+    hintUsed = false;
   };
 
 
@@ -207,9 +208,8 @@
     $('.thescore').text(totalPoints);
 
     resultElm.removeClass('hide');
-    resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!');
+    resultElm.find('.points').text("That's a distance of " + ~~dist + ' kilometers. You scored ' + points + ' points with that!' + (hintUsed ? ' It would be ' + points * 2 + " points if you'd done it without a hint." : ''));
     resultElm.find('.awesome-text').text(getAwesomeText(dist));
-
 
     details = [];
 
@@ -309,7 +309,13 @@
     if (dist > 10000) {
       return 0;
     }
-    return 100 - ~~(dist / 100);
+    var points = ((dist / 1000) - 10);
+    points = points * points;
+    if (hintUsed) {
+      points = points / 2;
+    }
+    points = Math.floor(points);
+    return points;
   };
 
 
@@ -336,6 +342,13 @@
       return randomText(textsForPoints.p10000);
     }
     return randomText(textsForPoints.p100000);
+  };
+
+
+  var openHint = function(evt) {
+    evt.preventDefault();
+    playGameElm.find('.hint').removeClass('closed');
+    hintUsed = true;
   }
 
 

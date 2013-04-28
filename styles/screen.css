@@ -138,17 +138,39 @@ main {
     left: -99999em; }
 /* line 127, ../src/sass/screen.sass */
 .play-game .timer,
-.play-game .score {
+.play-game .score,
+.play-game .hint {
   font: cgf_locust_resistanceregular;
   position: fixed;
   right: 2.5%;
   text-align: center;
   top: 10em;
   width: 25%; }
-/* line 136, ../src/sass/screen.sass */
+/* line 137, ../src/sass/screen.sass */
 .play-game .score {
   top: 12.5em; }
-/* line 139, ../src/sass/screen.sass */
+/* line 140, ../src/sass/screen.sass */
+.play-game .hint {
+  top: 15em; }
+  /* line 143, ../src/sass/screen.sass */
+  .play-game .hint:before {
+    background: #dadc08;
+    -webkit-border-radius: 5em;
+    -moz-border-radius: 5em;
+    -ms-border-radius: 5em;
+    -o-border-radius: 5em;
+    border-radius: 5em;
+    color: black;
+    content: attr(data-title);
+    left: 1.5em;
+    padding: 0.5em 1.5em;
+    position: absolute;
+    right: 1.5em;
+    top: 0; }
+  /* line 154, ../src/sass/screen.sass */
+  .play-game .hint.closed:before {
+    display: none; }
+/* line 157, ../src/sass/screen.sass */
 .play-game .result {
   background: #445261;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #445261), color-stop(100%, #0c1b3b));
@@ -173,10 +195,10 @@ main {
   text-align: center;
   width: 20em;
   z-index: 400; }
-  /* line 154, ../src/sass/screen.sass */
+  /* line 172, ../src/sass/screen.sass */
   .play-game .result h1 {
     margin: 0 0 0.25em; }
-  /* line 157, ../src/sass/screen.sass */
+  /* line 175, ../src/sass/screen.sass */
   .play-game .result .next {
     background: #cccccc;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f5f5f5), color-stop(100%, #cccccc));
@@ -198,7 +220,7 @@ main {
     margin: 1em auto;
     width: 60%; }
 
-/* line 170, ../src/sass/screen.sass */
+/* line 188, ../src/sass/screen.sass */
 .help {
   background: rgba(200, 200, 200, 0.9);
   color: #111111;
@@ -206,22 +228,22 @@ main {
   max-width: 40em;
   padding: 2em;
   width: 90%; }
-  /* line 178, ../src/sass/screen.sass */
+  /* line 196, ../src/sass/screen.sass */
   .help h1 {
     font-size: 2em;
     margin: 0.5em 0 0.25em; }
-  /* line 182, ../src/sass/screen.sass */
+  /* line 200, ../src/sass/screen.sass */
   .help h2 {
     font-size: 1.5em;
     margin: 2em 0 0.25em; }
-  /* line 186, ../src/sass/screen.sass */
+  /* line 204, ../src/sass/screen.sass */
   .help h3 {
     font-size: 1em;
     margin: 1em 0 0.25em; }
-  /* line 190, ../src/sass/screen.sass */
+  /* line 208, ../src/sass/screen.sass */
   .help p {
     line-height: 1.5em;
     margin-bottom: 1.5em; }
-  /* line 194, ../src/sass/screen.sass */
+  /* line 212, ../src/sass/screen.sass */
   .help a {
     color: #666666; }
