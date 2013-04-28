@@ -1,5 +1,5 @@
 (function($, Robinson, Modernizr) {
-  var pickGameElm, playGameElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints, collected, playing, hintUsed;
+  var pickGameElm, playGameElm, playAgainElm, endGameElm, helpElm, gameType, overlayElm, rbnsn, canTap, startedTime, currentInfo, canvasElm, ctx, totalPoints, textsForPoints, collected, playing, hintUsed;
 
 
   textsForPoints = {
@@ -20,6 +20,7 @@
 
     pickGameElm = $('.pick-game').removeClass('hide');
     playGameElm = $('.play-game');
+    playAgainElm = $('.play-again');
     endGameElm = $('.end-game');
     helpElm = $('.help');
     overlayElm = $('.overlay');
@@ -30,6 +31,7 @@
     resultElm.on('click', '.next', nextImage);
     $('body').on('click', '.toggle-help', toggleHelp);
     playGameElm.on('click', '.hint', openHint);
+    playAgainElm.on('click', startGame);
 
     // init the map details
     rbnsn = new Robinson(333, 650, -13);
@@ -80,6 +82,7 @@
     totalPoints = 0;
     collected = [];
 
+    endGameElm.addClass('hide');
     pickGameElm.addClass('hide');
     playGameElm.removeClass('hide');
 

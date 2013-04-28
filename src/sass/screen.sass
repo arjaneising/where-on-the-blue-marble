@@ -82,16 +82,20 @@ main
   p
     text-align: center
 
-  a.go-play-game
-    background: mix($yellow, #111, 80%)
-    +background(linear-gradient(mix($yellow, #111, 80%), mix($yellow, #111, 60%)))
-    border: 0.1em solid mix($yellow, #111, 60%)
-    +border-radius(5em)
-    display: inline-block
-    font-size: 2em
-    margin: 0 0 2em
-    padding: 0.3em 1em
-    text-decoration: none
+a.go-play-game,
+a.play-again
+  background: mix($yellow, #111, 80%)
+  +background(linear-gradient(mix($yellow, #111, 80%), mix($yellow, #111, 60%)))
+  border: 0.1em solid mix($yellow, #111, 60%)
+  +border-radius(5em)
+  display: inline-block
+  font-size: 2em
+  margin: 0 0 2em
+  padding: 0.3em 1em
+  text-decoration: none
+
+a.play-again
+  margin: 1.5em 0 0
 
 .play-game
   .photo

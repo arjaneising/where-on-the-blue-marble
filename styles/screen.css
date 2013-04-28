@@ -85,28 +85,33 @@ main {
   .pick-game p,
   .end-game p {
     text-align: center; }
-  /* line 85, ../src/sass/screen.sass */
-  .pick-game a.go-play-game,
-  .end-game a.go-play-game {
-    background: #b1b309;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b1b309), color-stop(100%, #898a0b));
-    background: -webkit-linear-gradient(#b1b309, #898a0b);
-    background: -moz-linear-gradient(#b1b309, #898a0b);
-    background: -o-linear-gradient(#b1b309, #898a0b);
-    background: linear-gradient(#b1b309, #898a0b);
-    border: 0.1em solid #898a0b;
-    -webkit-border-radius: 5em;
-    -moz-border-radius: 5em;
-    -ms-border-radius: 5em;
-    -o-border-radius: 5em;
-    border-radius: 5em;
-    display: inline-block;
-    font-size: 2em;
-    margin: 0 0 2em;
-    padding: 0.3em 1em;
-    text-decoration: none; }
+
+/* line 85, ../src/sass/screen.sass */
+a.go-play-game,
+a.play-again {
+  background: #b1b309;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b1b309), color-stop(100%, #898a0b));
+  background: -webkit-linear-gradient(#b1b309, #898a0b);
+  background: -moz-linear-gradient(#b1b309, #898a0b);
+  background: -o-linear-gradient(#b1b309, #898a0b);
+  background: linear-gradient(#b1b309, #898a0b);
+  border: 0.1em solid #898a0b;
+  -webkit-border-radius: 5em;
+  -moz-border-radius: 5em;
+  -ms-border-radius: 5em;
+  -o-border-radius: 5em;
+  border-radius: 5em;
+  display: inline-block;
+  font-size: 2em;
+  margin: 0 0 2em;
+  padding: 0.3em 1em;
+  text-decoration: none; }
 
 /* line 97, ../src/sass/screen.sass */
+a.play-again {
+  margin: 1.5em 0 0; }
+
+/* line 101, ../src/sass/screen.sass */
 .play-game .photo {
   left: 2.5%;
   overflow: hidden;
@@ -114,11 +119,11 @@ main {
   right: 45%;
   top: 10em;
   z-index: 10; }
-  /* line 105, ../src/sass/screen.sass */
+  /* line 109, ../src/sass/screen.sass */
   .play-game .photo img {
     height: auto;
     width: 100%; }
-/* line 109, ../src/sass/screen.sass */
+/* line 113, ../src/sass/screen.sass */
 .play-game img.map,
 .play-game .overlay {
   bottom: 2.5%;
@@ -128,15 +133,15 @@ main {
   right: 2.5%;
   width: 650px;
   z-index: 100; }
-/* line 119, ../src/sass/screen.sass */
+/* line 123, ../src/sass/screen.sass */
 .play-game .overlay {
   z-index: 200; }
-  /* line 122, ../src/sass/screen.sass */
+  /* line 126, ../src/sass/screen.sass */
   .play-game .overlay img {
     position: absolute;
     margin: -20px 0 0 -1px;
     left: -99999em; }
-/* line 127, ../src/sass/screen.sass */
+/* line 131, ../src/sass/screen.sass */
 .play-game .timer,
 .play-game .score,
 .play-game .hint {
@@ -146,13 +151,13 @@ main {
   text-align: center;
   top: 10em;
   width: 25%; }
-/* line 137, ../src/sass/screen.sass */
+/* line 141, ../src/sass/screen.sass */
 .play-game .score {
   top: 12.5em; }
-/* line 140, ../src/sass/screen.sass */
+/* line 144, ../src/sass/screen.sass */
 .play-game .hint {
   top: 15em; }
-  /* line 143, ../src/sass/screen.sass */
+  /* line 147, ../src/sass/screen.sass */
   .play-game .hint:before {
     background: #dadc08;
     -webkit-border-radius: 5em;
@@ -167,10 +172,10 @@ main {
     position: absolute;
     right: 1.5em;
     top: 0; }
-  /* line 154, ../src/sass/screen.sass */
+  /* line 158, ../src/sass/screen.sass */
   .play-game .hint.closed:before {
     display: none; }
-/* line 157, ../src/sass/screen.sass */
+/* line 161, ../src/sass/screen.sass */
 .play-game .result {
   background: #445261;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #445261), color-stop(100%, #0c1b3b));
@@ -195,10 +200,10 @@ main {
   text-align: center;
   width: 20em;
   z-index: 400; }
-  /* line 172, ../src/sass/screen.sass */
+  /* line 176, ../src/sass/screen.sass */
   .play-game .result h1 {
     margin: 0 0 0.25em; }
-  /* line 175, ../src/sass/screen.sass */
+  /* line 179, ../src/sass/screen.sass */
   .play-game .result .next {
     background: #cccccc;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f5f5f5), color-stop(100%, #cccccc));
@@ -220,7 +225,7 @@ main {
     margin: 1em auto;
     width: 60%; }
 
-/* line 188, ../src/sass/screen.sass */
+/* line 192, ../src/sass/screen.sass */
 .help {
   background: rgba(200, 200, 200, 0.9);
   color: #111111;
@@ -228,22 +233,22 @@ main {
   max-width: 40em;
   padding: 2em;
   width: 90%; }
-  /* line 196, ../src/sass/screen.sass */
+  /* line 200, ../src/sass/screen.sass */
   .help h1 {
     font-size: 2em;
     margin: 0.5em 0 0.25em; }
-  /* line 200, ../src/sass/screen.sass */
+  /* line 204, ../src/sass/screen.sass */
   .help h2 {
     font-size: 1.5em;
     margin: 2em 0 0.25em; }
-  /* line 204, ../src/sass/screen.sass */
+  /* line 208, ../src/sass/screen.sass */
   .help h3 {
     font-size: 1em;
     margin: 1em 0 0.25em; }
-  /* line 208, ../src/sass/screen.sass */
+  /* line 212, ../src/sass/screen.sass */
   .help p {
     line-height: 1.5em;
     margin-bottom: 1.5em; }
-  /* line 212, ../src/sass/screen.sass */
+  /* line 216, ../src/sass/screen.sass */
   .help a {
     color: #666666; }
